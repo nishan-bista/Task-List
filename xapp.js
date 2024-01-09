@@ -5,8 +5,6 @@ const itemsContainer = document.querySelector(".list-items");
 
 let deleteButton = document.querySelector(".deleteButton");
 
-
-
 // Event listner for add task button
 addTaskButton.addEventListener("click", () => {
   // creating listitem with value got from user
@@ -21,19 +19,25 @@ addTaskButton.addEventListener("click", () => {
   // checking if the input is empty or not if not appending the data
   if (inputFromUser.value === "") {
     alert("Task is empty. Cannot be added!!");
-  } else {
+  } else if(inputFromUser.value.toLowerCase().includes("fuck") ||inputFromUser.value.toLowerCase().includes("pussy") ||inputFromUser.value.toLowerCase().includes("vagina") || inputFromUser.value.toLowerCase().includes("puti")|| inputFromUser.value.toLowerCase().includes("lado")||inputFromUser.value.toLowerCase().includes("chikne")||inputFromUser.value.toLowerCase().includes("muji") ||
+  inputFromUser.value.toLowerCase().includes("mugi")||
+  inputFromUser.value.toLowerCase().includes("mg")||inputFromUser.value.toLowerCase().includes("pedo")){
+    alert("Inappropriate word Detected, Not allowed")
+
+  }
+  else
+  {
     itemsContainer.appendChild(newItemByUser);
     newItemByUser.appendChild(deleteIcon);
   }
   // Reseting value after click to none
   inputFromUser.value = "";
 });
-itemsContainer.addEventListener("click",(e)=>{
+itemsContainer.addEventListener("click", (e) => {
+  // console.log(e.target) ---Ignore
+
+  // Remove the parent list item when the delete icon is clicked
   if (e.target.classList.contains("deleteButton")) {
-    // Remove the parent list item when the delete icon is clicked
-    e.target.parentElement.remove();}
-
-})
-
-
-
+    e.target.parentElement.remove();
+  }
+});
