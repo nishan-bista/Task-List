@@ -1,45 +1,39 @@
+const inputFromUser = document.querySelector("#inputFromUser");
 
-  const userInput = document.querySelector("#inputFromUser");
-  const addTaskButton = document.querySelector(".submit-button");
-  const taskLists = document.querySelector(".addedTasks");
+const addTaskButton = document.querySelector("#addTask");
+const itemsContainer = document.querySelector(".list-items");
 
-  addTaskButton.addEventListener("click", () => {
+let deleteButton = document.querySelector(".deleteButton");
 
-    if(userInput.value==""){
-      alert("The task is Empyt!!")
-    }
-    else{
 
-    // Created container body for list items div and delete icon
-    const newItemBody = document.createElement("div");
-    newItemBody.classList.add("list-items");
-    taskLists.appendChild(newItemBody);
 
-    // Creating div insdie container body for list data got from user
-    const newItemContainer = document.createElement("div");
-    newItemContainer.classList.add("item-container");
-    newItemBody.appendChild(newItemContainer);
+// Event listner for add task button
+addTaskButton.addEventListener("click", () => {
+  // creating listitem with value got from user
+  const newItemByUser = document.createElement("li");
+  newItemByUser.textContent = inputFromUser.value;
 
-    // creating li and pushing it inside container body:child:div and appending the input text to li
-    const itemList = document.createElement("li");
-    const itemListData = document.createTextNode(userInput.value);
-    itemList.appendChild(itemListData);
+  // creating delete icon everytime li is created
+  const deleteIcon = document.createElement("i");
+  deleteIcon.classList.add("fa-solid", "fa-trash");
+  deleteIcon.classList.add("deleteButton");
 
-    // apending the child div inside container body div
-    newItemContainer.appendChild(itemList);
+  // checking if the input is empty or not if not appending the data
+  if (inputFromUser.value === "") {
+    alert("Task is empty. Cannot be added!!");
+  } else {
+    itemsContainer.appendChild(newItemByUser);
+    newItemByUser.appendChild(deleteIcon);
+  }
+  // Reseting value after click to none
+  inputFromUser.value = "";
+});
+itemsContainer.addEventListener("click",(e)=>{
+  if (e.target.classList.contains("deleteButton")) {
+    // Remove the parent list item when the delete icon is clicked
+    e.target.parentElement.remove();}
 
-    //creating delete icon  div and appending it to item body container
-    const newDeleteIcon = document.createElement("div");
-    newDeleteIcon.classList.add("delete-icon");
-    newItemBody.appendChild(newDeleteIcon);
+})
 
-    // finally appending icon to the div created for icon 
-    const newItemIcon = document.createElement("i");
-    newItemIcon.classList.add("fa-solid", "fa-xmark");
-    newDeleteIcon.appendChild(newItemIcon);
 
-    //This clears the input when the add task is clicked
-    userInput.value = "";
-    }
-  });
 

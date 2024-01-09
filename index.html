@@ -4,6 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vollkorn&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -11,33 +20,36 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!-- stylesheet -->
     <link rel="stylesheet" href="style.css" />
   </head>
-
   <body>
     <div class="container">
-      <div class="panel-first">
-        <h2>Task List</h2>
+      <div class="panel-one">
+        <span>Task List</span>
       </div>
-      <div class="input-area">
-        <input type="text" id="inputFromUser" placeholder="Enter Task" />
-        <button id="addTask" class="submit-button">Add Task</button>
-      </div>
-
-      <div class="addedTasks">
-        
-      </div>
-
-      <!-- <div class="list-items">  dummy model when user adds tasks !! Ignore
-        
-        <div class="item-container">
-          <li>jkladjsfkla</li>
+      <div class="input-container">
+        <div class="input-add-area">
+          <div class="input-box">
+            <input type="text" id="inputFromUser" />
+          </div>
+          <div class="addTaskButton">
+            <button id="addTask">Add Task</button>
+          </div>
         </div>
+      </div>
+      <div class="list-items-container">
+        <ul class="list-items">
+          <!-- <li>This is dummy list  <i class="fa-solid fa-trash deleteButton" ></i></li> -->
 
-        <div class="delete-icon">
-          <i class="fa-solid fa-xmark"></i>
-        </div>
-      </div> -->
+
+          
+        </ul>
+      </div>
+
+
+
+
     </div>
 
     <script src="xapp.js"></script>
