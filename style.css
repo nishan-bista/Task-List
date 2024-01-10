@@ -4,6 +4,7 @@
   border: border-box;
 }
 body {
+   
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -27,6 +28,7 @@ background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(77,210,212,1) 44%, r
   border-bottom: 2px solid black;
 }
 .panel-one span {
+  color: #FBF9F1;
   font-size: 30px;
   font-weight: bold;
 }
@@ -49,16 +51,16 @@ background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(77,210,212,1) 44%, r
 
 .input-box input {
   text-align: center;
-  height: 30px;
-  width: 350px;
+  height: 35px;
+  width: 320px;
   outline: none;
   border: none;
   border-radius: 20px;
   
 }
 .addTaskButton button {
-  height: 35px;
-  width: 100px;
+  height: 40px;
+  width: 150px;
 }
 .list-items-container {
   width: 100%;
