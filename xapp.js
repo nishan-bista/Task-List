@@ -6,6 +6,8 @@ const itemsContainer = document.querySelector(".list-items");
 const deleteButton = document.querySelector(".deleteButton");
 const checkButton = document.querySelector(".checkButton");
 
+const popUp = document.querySelector(".pop-up");
+
 // Event listner for add task button
 addTaskButton.addEventListener("click", () => {
   // creating listitem with value got from user
@@ -13,25 +15,29 @@ addTaskButton.addEventListener("click", () => {
   newItemByUser.textContent = inputFromUser.value;
 
   //creating div element for delet-check icon
-  const divForDC= document.createElement("div");
-  divForDC.classList.add("check-delete")
- 
+  const divForDC = document.createElement("div");
+  divForDC.classList.add("check-delete");
 
   // creating delete icon everytime li is created
   const deleteIcon = document.createElement("i");
-  deleteIcon.classList.add("fa-solid", "fa-trash","deleteButton");
-  
-  
-  
+  deleteIcon.classList.add("fa-solid", "fa-trash", "deleteButton");
+
   //creating check icon
   const checkIcon = document.createElement("i");
-  checkIcon.classList.add("fa-solid","fa-check","checkButton")
+  checkIcon.classList.add("fa-solid", "fa-check", "checkButton");
   saveTasksToLocalStorage();
- 
 
   // checking if the input is empty or not if not appending the data
   if (inputFromUser.value === "") {
-    alert("Task is empty. Cannot be added!!");
+    popUp.style.backgroundColor = "#d3d3d3";
+    popUp.style.fontSize = "20px";
+    popUp.innerHTML = "<p>Task cannot be empty!!</p>";
+
+    setTimeout(() => {
+      popUp.innerHTML = "";
+
+      popUp.style.backgroundColor = "transparent";
+    }, 3000);
   } else if (
     inputFromUser.value.toLowerCase().includes("fuck") ||
     inputFromUser.value.toLowerCase().includes("pussy") ||
@@ -44,16 +50,25 @@ addTaskButton.addEventListener("click", () => {
     inputFromUser.value.toLowerCase().includes("mg") ||
     inputFromUser.value.toLowerCase().includes("pedo")
   ) {
-    alert("Inappropriate word Detected, Not allowed");
+    popUp.innerHTML =
+      "<p>Contains Inappropriate word!! Task cannot be added.</p>";
+
+    popUp.style.backgroundColor = "#d3d3d3";
+    popUp.style.fontSize = "16px";
+
+    setTimeout(() => {
+      popUp.innerHTML = "";
+
+      popUp.style.backgroundColor = "transparent";
+    }, 3000);
   } else {
     itemsContainer.appendChild(newItemByUser);
     newItemByUser.appendChild(divForDC);
     divForDC.appendChild(checkIcon);
     divForDC.appendChild(deleteIcon);
 
-     // Save tasks to local storage
-     saveTasksToLocalStorage();
-    
+    // Save tasks to local storage
+    saveTasksToLocalStorage();
   }
   // Reseting value after click to none
   inputFromUser.value = "";
@@ -65,21 +80,18 @@ itemsContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("deleteButton")) {
     e.target.parentElement.parentElement.remove();
     saveTasksToLocalStorage();
-    
   }
   if (e.target.classList.contains("checkButton")) {
     e.target.parentElement.parentElement.classList.toggle("checked");
     saveTasksToLocalStorage();
-    
-    
   }
-  
-  
 });
 
 // Save tasks to local storage
 function saveTasksToLocalStorage() {
-  const tasks = Array.from(itemsContainer.children).map(item => item.textContent);
+  const tasks = Array.from(itemsContainer.children).map(
+    (item) => item.textContent
+  );
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
@@ -88,7 +100,7 @@ function loadTasksFromLocalStorage() {
   const storedTasks = localStorage.getItem("tasks");
   const tasks = storedTasks ? JSON.parse(storedTasks) : [];
 
-  tasks.forEach(task => {
+  tasks.forEach((task) => {
     const newItemByUser = document.createElement("li");
     newItemByUser.textContent = task;
 
@@ -110,10 +122,3 @@ function loadTasksFromLocalStorage() {
 
 // Load tasks from local storage on page load
 loadTasksFromLocalStorage();
-
-
-
- 
-
- 
- 
