@@ -1,3 +1,31 @@
+const prag = document.querySelector(".prag")
+
+let userInputName = prompt("Welcome, Please enter your name.");
+
+while (!userInputName) {
+  userInputName = prompt("Please Enter.");
+}
+
+userInputName =
+  userInputName.substring(0, 1).toUpperCase() + userInputName.substring(1);
+
+const username = document.querySelector(".username");
+username.textContent = `Hello, ${userInputName}`;
+
+
+prag.textContent=`Please feel free to use your tasklist.`
+
+setTimeout(()=>{
+prag.remove()
+},3000)
+
+
+
+
+
+
+
+
 const inputFromUser = document.querySelector("#inputFromUser");
 
 const addTaskButton = document.querySelector("#addTask");
@@ -31,7 +59,7 @@ addTaskButton.addEventListener("click", () => {
   if (inputFromUser.value === "") {
     popUp.style.backgroundColor = "#d3d3d3";
     popUp.style.fontSize = "20px";
-    popUp.innerHTML = "<p>Task cannot be empty!!</p>";
+    popUp.innerHTML = `<p>Sorry,${userInputName} Task cannot be empty!!</p>`;
 
     setTimeout(() => {
       popUp.innerHTML = "";
@@ -51,7 +79,7 @@ addTaskButton.addEventListener("click", () => {
     inputFromUser.value.toLowerCase().includes("pedo")
   ) {
     popUp.innerHTML =
-      "<p>Contains Inappropriate word!! Task cannot be added.</p>";
+      `<p>Sorry ${userInputName} it Contains Inappropriate word!! Task cannot be added.</p>`;
 
     popUp.style.backgroundColor = "#d3d3d3";
     popUp.style.fontSize = "16px";
