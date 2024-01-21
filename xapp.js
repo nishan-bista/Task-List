@@ -1,4 +1,4 @@
-const prag = document.querySelector(".prag")
+const prag = document.querySelector(".prag");
 
 let userInputName = prompt("Welcome, Please enter your name.");
 
@@ -12,19 +12,11 @@ userInputName =
 const username = document.querySelector(".username");
 username.textContent = `Hello, ${userInputName}`;
 
+prag.textContent = `Please feel free to use your tasklist.`;
 
-prag.textContent=`Please feel free to use your tasklist.`
-
-setTimeout(()=>{
-prag.remove()
-},3000)
-
-
-
-
-
-
-
+setTimeout(() => {
+  prag.remove();
+}, 3000);
 
 const inputFromUser = document.querySelector("#inputFromUser");
 
@@ -78,8 +70,7 @@ addTaskButton.addEventListener("click", () => {
     inputFromUser.value.toLowerCase().includes("mg") ||
     inputFromUser.value.toLowerCase().includes("pedo")
   ) {
-    popUp.innerHTML =
-      `<p>Sorry ${userInputName} it Contains Inappropriate word!! Task cannot be added.</p>`;
+    popUp.innerHTML = `<p>Sorry ${userInputName} it Contains Inappropriate word!! Task cannot be added.</p>`;
 
     popUp.style.backgroundColor = "#d3d3d3";
     popUp.style.fontSize = "16px";
