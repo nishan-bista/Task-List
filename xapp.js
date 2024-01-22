@@ -19,10 +19,8 @@ setTimeout(() => {
 }, 3000);
 
 const inputFromUser = document.querySelector("#inputFromUser");
-
 const addTaskButton = document.querySelector("#addTask");
 const itemsContainer = document.querySelector(".list-items");
-
 const deleteButton = document.querySelector(".deleteButton");
 const checkButton = document.querySelector(".checkButton");
 
@@ -81,6 +79,7 @@ addTaskButton.addEventListener("click", () => {
       popUp.style.backgroundColor = "transparent";
     }, 3000);
   } else {
+
     itemsContainer.appendChild(newItemByUser);
     newItemByUser.appendChild(divForDC);
     divForDC.appendChild(checkIcon);
@@ -92,6 +91,7 @@ addTaskButton.addEventListener("click", () => {
   // Reseting value after click to none
   inputFromUser.value = "";
 });
+
 itemsContainer.addEventListener("click", (e) => {
   // console.log(e.target) ---Ignore
 
